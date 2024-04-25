@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pomorel
+  namespace: default
+  labels:
+    app: pomodoro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pomodoro
+  template:
+    metadata:
+      labels:
+        app: pomodoro
+    spec:
+      containers:
+      - name: pomodoro
+        image: rudra12/pomodoro-app  # Replace this with your actual Docker image and tag
+        ports:
+        - containerPort: 31025  # Replace with the port your Flask app is listening on
